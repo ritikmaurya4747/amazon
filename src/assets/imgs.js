@@ -4,6 +4,7 @@ import logo from './logo.png'
 import orders from './orders.png'
 import search from './search.png'
 import user from './user.png'
+import logo2 from './logo2.png'
 
  const img ={
     heart,
@@ -11,6 +12,7 @@ import user from './user.png'
     logo,
     orders,
     search,
-    user
+    user,
+    logo2
 }
 export default img
