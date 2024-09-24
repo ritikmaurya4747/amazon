@@ -1,9 +1,10 @@
 import React from "react";
 import man_logo from "../imgs/delivery.png";
+import Popular from "./Popular";
 function Home() {
   return (
     <>
-      <div className=" bg-gray-200 py-10">
+      <div className=" bg-gray-100 py-10">
         <div className="flex justify-around bg-orange-400 w-[70%] mx-auto rounded-xl text-white">
           <div className="w-1/2">
             <p className="text-5xl font-bold py-7">Free Delivery!</p>
@@ -17,7 +18,9 @@ function Home() {
             <img className="w-80" src={man_logo} alt="" />
           </div>
         </div>
+        <Popular/>
       </div>
+      
     </>
   );
 }
