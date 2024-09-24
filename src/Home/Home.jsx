@@ -3,6 +3,7 @@ import man_logo from "../imgs/delivery.png";
 import Popular from "./Popular";
 function Home() {
   return (
+    
     <>
       <div className=" bg-gray-100 py-10">
         <div className="flex justify-around bg-orange-400 w-[70%] mx-auto rounded-xl text-white">
