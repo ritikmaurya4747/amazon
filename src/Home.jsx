@@ -1,6 +1,6 @@
 import React from "react";
-import man_logo from "../imgs/delivery.png";
-import Popular from "../Category/Popular";
+import man_logo from './imgs/delivery.png'
+import Popular from "./Category/Popular";
 function Home() {
   return (
     
