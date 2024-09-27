@@ -9,7 +9,7 @@ function Header() {
         <div className="flex justify-around space-x-24">
         <div>
           <img className="w-28" src={header_img.logo} alt="img" />
-        </div>
+        </div>  
         <div className="flex">
           <input
             className="outline-none rounded-tl-lg rounded-bl-lg border border-gray-400 bg-gray-700 px-2 w-72"
