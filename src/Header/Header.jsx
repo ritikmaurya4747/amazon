@@ -6,6 +6,7 @@ function Header() {
   return (
     <>
       <div className="bg-gray-900 flex text-white px-8 p-5 justify-between items-center">
+        <div className="flex justify-around space-x-24">
         <div>
           <img className="w-28" src={header_img.logo} alt="img" />
         </div>
@@ -16,15 +17,16 @@ function Header() {
             type="text"
           />
           <img
-            className="w-10 h-10 bg-yellow-600 rounded-top-right rounded-tr-lg rounded-br-lg p-2"
+            className="w-12 h-12 bg-yellow-600 rounded-top-right rounded-tr-lg rounded-br-lg p-2"
             src={header_img.search}
-            alt=""
+            alt="search"
           />
         </div>
+        </div>
         <div className="flex gap-5 ">
-          <img className="w-8 h-8 cursor-pointer" src={header_img.orders} alt="order" />
-          <img className="w-8 h-8 cursor-pointer" src={header_img.added} alt="added" />
           <img className="w-8 h-8 cursor-pointer" src={header_img.heart} alt="heart" />
+          <img className="w-8 h-8 cursor-pointer" src={header_img.added} alt="added" />
+          <img className="w-8 h-8 cursor-pointer" src={header_img.orders} alt="order" />
           <img className="w-8 h-8 cursor-pointer" src={header_img.user} alt="user" />
         </div>
       </div>
