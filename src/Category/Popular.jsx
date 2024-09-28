@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState , useContext} from "react";
 import { categoryImg } from "./homeimg";
 
+import { CategoryContext } from "../Context/Context";
+
+
 function Popular() {
+  const { changeCategory } = useContext(CategoryContext);
   const [activeImg, setActiveImg] = useState(null);
   const images = [
     {
@@ -12,22 +16,25 @@ function Popular() {
     {
       src: categoryImg.jwellery,
       whiteSrc: categoryImg.jewellry_White,
-      className: "jwellery",
+      className: "jewelery",
     },
     {
       src: categoryImg.men,
       whiteSrc: categoryImg.men_White,
-      className: "men",
+      className: "men's clothing",
     },
     {
       src: categoryImg.women,
       whiteSrc: categoryImg.women_White,
-      className: "women",
+      className: "women's clothing",
     },
   ];
 
-  const whiteImagesHandle = (index) => {
+  const whiteImagesHandle = (index,image) => {
     setActiveImg(index === activeImg ? null : index);
+    //alert(image.className + " white");
+    changeCategory(image.className);
+
   };
 
   return (
@@ -42,7 +49,7 @@ function Popular() {
             className={` p-3 rounded-xl flex justify-center ${activeImg===index?"bg-black":"bg-white"}`}
           >
             <img
-              onClick={() => whiteImagesHandle(index)}
+              onClick={() => whiteImagesHandle(index,image)}
               src={activeImg === index ? image.whiteSrc : image.src}
               alt={image.className}
               className="w-14 h-13 cursor-pointer"

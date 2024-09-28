@@ -1,19 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useContext} from "react";
 import rating from "./imgs/rating.png";
 import heart from "./imgs/heart.png";
-import heart_white from "./imgs/red-heart.png";
+// import heart_white from "./imgs/red-heart.png";
+import { CategoryContext } from "./Context/Context";
+
 function Deals() {
   const [allProducts, setAllProducts] = useState([]);
   const [likedProducts, setLikedProducts] = useState(heart);
-
+  const { category } = useContext(CategoryContext);
+  
   useEffect(() => {
     const getProducts = async () => {
       const response = await fetch("https://fakestoreapi.com/products");
+      //alert("Category: " + category)
       const products = await response.json();
-      setAllProducts(products);
+      console.log("Products :" , products)
+      if (category!=='all') {
+        const filteredProducts = products.filter(
+          (product) => product.category === category
+        );
+        setAllProducts(filteredProducts);
+
+      }
+      else {
+        setAllProducts(products);
+      }
     };
     getProducts();
-  }, []);
+  }, [category]);
 
   return (
     <>
