@@ -1,18 +1,17 @@
 import React, { useEffect, useState , useContext} from "react";
 import rating from "./imgs/rating.png";
 import heart from "./imgs/heart.png";
-import heart_white from "./imgs/red-heart.png";
+import heart_red from "./imgs/red-heart.png";
 import { CategoryContext } from "./Context/Context";
 
 function Deals() {
   const [allProducts, setAllProducts] = useState([]);
-  const [likedProducts, setLikedProducts] = useState(heart);
+  const [likedProducts, setLikedProducts] = useState({});
   const { category } = useContext(CategoryContext);
   
   useEffect(() => {
     const getProducts = async () => {
       const response = await fetch("https://fakestoreapi.com/products");
-      //alert("Category: " + category)
       const products = await response.json();
       if (category!=='all') {
         const filteredProducts = products.filter(
@@ -27,6 +26,15 @@ function Deals() {
     getProducts();
   }, [category]);
 
+  const likedProductsHandle = (productId) => {
+    setLikedProducts((prev) => ({
+      ...prev,
+      [productId]:!prev[productId]
+
+    }))
+  }
+  
+
   return (
     <>
       <div className="bg-gray-100 mt-6">
@@ -36,9 +44,13 @@ function Deals() {
           {allProducts.map((item) => (
             <div key={item.id} className="space-y-2 p-4 rounded-lg ">
               <div className="bg-white w-56 h-64 flex  justify-center items-center rounded-xl aspect-[3/2] p-8 relative">
-                <div className="absolute top-3 right-3">
-                  {" "}
-                  <img className="w-6 h-6" src={heart} alt="" />
+              <div className="absolute top-3 right-3">
+                  <img
+                    onClick={()=>likedProductsHandle(item.id)}
+                    className="w-6 h-6 cursor-pointer"
+                    src={likedProducts[item.id] ? heart_red : heart} 
+                    alt="like"
+                  />
                 </div>
 
                 <img
