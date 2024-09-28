@@ -1,22 +1,21 @@
-  import React from 'react'
-  import Header from './Header/Header'
+import React from "react";
+import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
+import Home from "./Home";
+import Deals from "./Deals";
+import { CategoryProvider } from "./Context/Context";
 
-  import Footer from './Footer/Footer'
-  import Home from './Home'
-  import Deals from './Deals'
- import { CategoryProvider } from './Context/Context'
-
-  function App() {
-    return (
-      <CategoryProvider>
+function App() {
+  return (
+    <CategoryProvider>
       <div>
-        <Header/>
-        <Home/>
-        <Deals/>
-        <Footer/>
+        <Header />
+        <Home />
+        <Deals />
+        <Footer />
       </div>
-      </CategoryProvider>
-    )
-  }
+    </CategoryProvider>
+  );
+}
 
-  export default App
+export default App;

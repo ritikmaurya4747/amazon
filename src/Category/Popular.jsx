@@ -1,6 +1,5 @@
 import React, { useState , useContext} from "react";
 import { categoryImg } from "./homeimg";
-
 import { CategoryContext } from "../Context/Context";
 
 
@@ -32,9 +31,7 @@ function Popular() {
 
   const whiteImagesHandle = (index,image) => {
     setActiveImg(index === activeImg ? null : index);
-    //alert(image.className + " white");
     changeCategory(image.className);
-
   };
 
   return (
