@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import rating from "./imgs/rating.png";
-import heart from "./imgs/heart.png";
-import heart_red from "./imgs/red-heart.png";
-import { CategoryContext } from "./Context/Context";
+import rating from "../imgs/rating.png";
+import heart from "../imgs/heart.png";
+import heart_red from "../imgs/red-heart.png";
+import { CategoryContext } from "../Context/Context";
 
 function Deals() {
   const [allProducts, setAllProducts] = useState([]);

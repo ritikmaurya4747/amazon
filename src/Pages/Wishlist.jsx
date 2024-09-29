@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Header/Header";
+import Header from "../Home/Navbar";
 // import { CategoryContext } from '../Context/Context'
 
 function Wishlist() {

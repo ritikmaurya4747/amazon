@@ -1,7 +1,7 @@
 import React from "react";
-import man_logo from "./imgs/delivery.png";
-import Header from "./Header/Header";
-import Popular from "./Category/Popular";
+import man_logo from "../imgs/delivery.png";
+import Header from "./Navbar";
+import Popular from "./Popular";
 import Deals from "./Deals";
 function Home() {
   return (
