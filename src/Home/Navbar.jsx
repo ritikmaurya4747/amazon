@@ -33,21 +33,27 @@ function Header() {
               alt="heart"
             />
           </Link>
+          <Link to="/cart">
           <img
             className="w-8 h-8 cursor-pointer"
             src={header_img.added}
             alt="added"
           />
+          </Link>
+          <Link to="/order">
           <img
             className="w-8 h-8 cursor-pointer"
             src={header_img.orders}
             alt="order"
           />
+          </Link>
+          <Link to="/user">
           <img
             className="w-8 h-8 cursor-pointer"
             src={header_img.user}
             alt="user"
           />
+          </Link>
         </div>
       </div>
     </>

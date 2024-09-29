@@ -1,11 +1,11 @@
 import React from "react";
-import Header from "../Home/Navbar";
+import Navbar from "../Home/Navbar";
 // import { CategoryContext } from '../Context/Context'
 
 function Wishlist() {
   return (
     <>
-      <Header />
+      <Navbar />
       <div className="h-72">
         <h1>This is wishlist </h1>
       </div>
