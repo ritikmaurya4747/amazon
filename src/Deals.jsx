@@ -7,23 +7,18 @@ import { CategoryContext } from "./Context/Context";
 function Deals() {
   const [allProducts, setAllProducts] = useState([]);
   const [likedProducts, setLikedProducts] = useState({});
-  const { category } = useContext(CategoryContext);
+  const { category, products } = useContext(CategoryContext);
 
   useEffect(() => {
-    const getProducts = async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const products = await response.json();
-      if (category !== "all") {
-        const filteredProducts = products.filter(
-          (product) => product.category === category
-        );
-        setAllProducts(filteredProducts);
-      } else {
-        setAllProducts(products);
-      }
-    };
-    getProducts();
-  }, [category]);
+    if (category !== "all") {
+      const filteredProducts = products.filter(
+        (product) => product.category === category
+      );
+      setAllProducts(filteredProducts);
+    } else {
+      setAllProducts(products);
+    }
+  }, [category,products]);
 
   const likedProductsHandle = (productId) => {
     setLikedProducts((prev) => ({
@@ -34,7 +29,7 @@ function Deals() {
 
   return (
     <>
-      <div className="bg-gray-100 mt-6">
+      <div className="bg-gray-100 mt-10 py-3">
         <p className="text-2xl font-bold text-center mb-10">Hot Deals 🔥</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 w-[95%] mx-auto">
           {allProducts.map((item) => (
