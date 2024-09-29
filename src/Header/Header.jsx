@@ -2,7 +2,6 @@ import React from "react";
 // import Logo from "../assets/logo.png";
 import header_img from "../assets/imgs.js";
 import { Link } from "react-router-dom";
-import Home from "../Home.jsx";
 
 function Header() {
   return (
@@ -51,7 +50,6 @@ function Header() {
           />
         </div>
       </div>
-      <Home />
     </>
   );
 }

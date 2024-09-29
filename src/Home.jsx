@@ -1,9 +1,12 @@
 import React from "react";
 import man_logo from "./imgs/delivery.png";
+import Header from "./Header/Header";
 import Popular from "./Category/Popular";
+import Deals from "./Deals";
 function Home() {
   return (
     <>
+    <Header/>
       <div className=" bg-gray-100 py-10">
         <div className="flex justify-around bg-orange-400 w-[70%] mx-auto rounded-xl text-white">
           <div className="w-1/2">
@@ -22,6 +25,8 @@ function Home() {
         </div>
         <Popular />
       </div>
+        <Deals/>
+      
     </>
   );
 }
