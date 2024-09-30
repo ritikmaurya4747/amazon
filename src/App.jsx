@@ -1,27 +1,33 @@
-import React from "react";
-import Home from "../src/Home/Home";
-import Footer from "../src/Home/Footer";
-import { CategoryProvider } from "./Context/Context";
-import { BrowserRouter, Route, Routes } from "react-router-dom"; // Correct imports
-import Wishlist from "./Pages/Wishlist";
-import Cart from "./Pages/Cart";
-import Order from "./Pages/Order";
+import React from 'react';
+import { Provider } from 'react-redux';
+import store from './Redux/Store';
+import Home from './Home/Home';
+import Footer from './Home/Footer';
+import { CategoryProvider } from './Context/Context';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Wishlist from './Pages/Wishlist';
+import Cart from './Pages/Cart';
+import Order from './Pages/Order';
+import Product from './Pages/Product';
 
 function App() {
   return (
-    <BrowserRouter>
-      <CategoryProvider>
-        <div>
-          <Routes>
-          <Route path="/" element={<Home />}/>
-            <Route path="/wishlist" element={<Wishlist />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/order" element={<Order />}/>
-          </Routes>
-          <Footer />
-        </div>
-      </CategoryProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <CategoryProvider>
+          <div>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/wishlist" element={<Wishlist />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/order" element={<Order />} />
+              <Route path="product/:id" element={<Product/>}/>
+            </Routes>
+            <Footer />
+          </div>
+        </CategoryProvider>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

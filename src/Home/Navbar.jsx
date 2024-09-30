@@ -1,12 +1,15 @@
 import React from "react";
-// import Logo from "../assets/logo.png";
 import header_img from "../assets/imgs.js";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 function Header() {
+  const wishlistCount = useSelector((state) => state.wishlist.wishlist.length);
+
   return (
     <>
-      <div className="bg-gray-900 flex text-white px-8 p-5 justify-between items-center">
+      <div className="bg-gray-900 flex text-white px-8 p-6 justify-between items-center">
         <div className="flex justify-around space-x-24">
           <div>
             <Link to="/"> 
@@ -14,7 +17,7 @@ function Header() {
           </div>
           <div className="flex">
             <input
-              className="outline-none rounded-tl-lg rounded-bl-lg border border-gray-400 bg-gray-700 px-2 w-72"
+              className=" rounded-tl-lg rounded-bl-lg border border-gray-600 bg-gray-700 px-2 w-[350px]"
               placeholder="Search..."
               type="text"
             />
@@ -25,17 +28,20 @@ function Header() {
             />
           </div>
         </div>
-        <div className="flex gap-5 ">
+        <div className="flex gap-8 mx-5 items-center">
           <Link to="/wishlist">
-            <img
+            <div className="relative"><img
               className="w-8 h-8 cursor-pointer"
               src={header_img.heart}
               alt="heart"
             />
+            <span className="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full h-5 w-5 flex items-center justify-center">
+            {wishlistCount}
+          </span></div>
           </Link>
           <Link to="/cart">
           <img
-            className="w-8 h-8 cursor-pointer"
+            className="w-8 h-8 cursor-pointer "
             src={header_img.added}
             alt="added"
           />
@@ -49,7 +55,7 @@ function Header() {
           </Link>
           <Link to="/user">
           <img
-            className="w-8 h-8 cursor-pointer"
+            className="w-12 h-12 cursor-pointer"
             src={header_img.user}
             alt="user"
           />

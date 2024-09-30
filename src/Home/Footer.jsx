@@ -4,8 +4,8 @@ import footer_img from "../assets/imgs.js";
 function Footer() {
   return (
     <>
-    <div className="text-gray-100  bg-gray-900 flex py-6 mt-2 justify-center"><h3><span className=" font-bold">Disclaimer:</span> This Amazon clone project is a mere simulation and is not affiliated with Amazon in any way.</h3></div>
-      <div className="flex justify-around">
+    <div className="text-gray-100  bg-gray-900 flex py-6 mt-2 justify-center "><h3><span className=" font-bold">Disclaimer:</span> This Amazon clone project is a mere simulation and is not affiliated with Amazon in any way.</h3></div>
+      <div className="flex justify-around ">
         <div className="">
           <h2 className="font-bold  text-lg py-4">Get to Know us</h2>
           <ul className="space-y-4 text-gray-400 cursor-pointer">
@@ -39,7 +39,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center pt-14 space-x-5">
+      <div className="flex justify-center pb-8 pt-14 space-x-5">
         <img className="w-20 " src={footer_img.logo2} alt="" />
         <p className="mt-1"> © 2024 | Developed by <a href="https://github.com/pradeepyadav0503" target="_blank" className="text-purple-800 underline hover:text-blue-700">
     Pradeep Yadav

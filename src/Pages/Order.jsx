@@ -4,7 +4,7 @@ function Order() {
   return (
     <>
       <Navbar />
-      <div className="h-72">
+      <div className="h-[500px]">
         <h1>This is order section</h1>
       </div>
     </>
