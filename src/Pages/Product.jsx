@@ -69,7 +69,7 @@ function Product() {
             <hr className="border-gray-300 mt-8" />
             <div className="flex items-center gap-3 py-5">
               <p className="font-bold text-2xl"> Price: ${product.price} </p>
-              <p className="text-red-700 font-semibold text-xl">
+              <p className="text-red-700 font-semibold text-xl line-through">
                 ${Math.round(product.price * 1.66)}
               </p>
             </div>
