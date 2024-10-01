@@ -72,14 +72,59 @@ function Cart() {
                               <button>Save</button>
                             </div>
                             <div className="flex gap-2">
+                                
                               <img className="w-6 h-6" src={del} alt="" />
-                              <button>Delete</button>
+                              <button onClick={handleRemoveFromCart}>Delete</button>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div className="w-[50%] h-auto">j</div>
+                    {/* Chekout to payment  */}
+                    <div className="w-[50%] h-auto bg-white shadow-lg rounded-2xl p-7">
+                      <div className="bg-green-400 p-2 rounded-md text-gray-800 font-base">
+                        <p>
+                          Congrats! You're eligible for <b>Free Delivery</b>.
+                        </p>
+                        <p>
+                          Use code <b>SHUBHO20</b> for 20% discount.
+                        </p>
+                      </div>
+                      <hr className="border-x-gray-500 my-5 " />
+                      <div className="flex gap-2">
+                        <input
+                          className="border w-60 rounded-md h-10 outline-none pl-2 placeholder:text-base"
+                          type="text"
+                          placeholder="Promocode"
+                        />
+                        <button className="bg-black text-white font-semibold text-xl px-2 py-1 rounded-md">
+                          Apply
+                        </button>
+                      </div>
+                      <hr className="border-x-gray-500 my-5 " />
+                      <div className="flex justify-between font-bold">
+                        <p>Sub-Total</p>
+                        <p>${item.price}</p>
+                      </div>
+                      <div className="flex justify-between text-gray-600 my-2">
+                        <p>Delivery</p>
+                        <p>$0.00</p>
+                      </div>
+                      <div className="flex justify-between text-gray-600">
+                        <p>Tax</p>
+                        <p>(5%) + $1.11</p>
+                      </div>
+                      <hr className="border-x-gray-500 my-5 " />
+                      <div className="flex justify-between font-bold my-2">
+                        <p>Total</p>
+                        <p>${item.price}</p>
+                      </div>
+                      <div className="flex justify-center mt-6">
+                        <button className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
+                          Proceed to Payment
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </>
               ))
