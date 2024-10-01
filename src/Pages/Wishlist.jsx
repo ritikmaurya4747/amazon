@@ -11,16 +11,16 @@ function Wishlist() {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-100 h-[500px]">
+      <div className="bg-gray-100 h-auto py-5">
         <h1 className="text-center font-bold text-3xl py-5">Wishlist</h1>
-        <div className="w-[80%] h-auto mx-auto border border-red-500 ">
+        <div className="w-[80%] h-auto mx-auto  flex justify-center">
           {wishlist.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
               {wishlist.map((item) => (
                 <>
-                  <div>
+                  <div className="shadow-md  rounded-2xl ">
                     <div
-                      className="bg-white w-56 h-64 flex justify-center items-center rounded-xl aspect-[3/2] p-8 relative group"
+                      className="bg-white w-56 h-60 flex justify-center items-center rounded-tr-xl rounded-tl-xl aspect-[3/2] p-8 relative group"
                       key={item.id}
                     >
                       <img
@@ -41,27 +41,34 @@ function Wishlist() {
                         />
                       </div>
                     </div>
-                    <div className="w-52 h-12 my-3">
-                      <p className="font-bold text-gray-700">
+                    <div className="w-52 h-12 my-3 mx-2">
+                      <p className="font-bold text-gray-700 ">
                         {item.title.length > 33
                           ? `${item.title.substring(0, 33)}...`
                           : item.title}
                       </p>
                     </div>
-                    <p className="text-sm">{item.category.toUpperCase()}</p>
-                    <div className="flex my-4">
-                    <div className="flex">
-                      <img className="w-4" src={rating} alt="" />
-                      <img className="w-4" src={rating} alt="" />
-                      <img className="w-4" src={rating} alt="" />
-                      <img className="w-4" src={rating} alt="" />
-                      <img className="w-4" src={rating} alt="" />
+                    <p className="text-sm mx-2">
+                      {item.category.toUpperCase()}
+                    </p>
+                    <div className="flex my-4 mx-2">
+                      <div className="flex ">
+                        <img className="w-4" src={rating} alt="" />
+                        <img className="w-4" src={rating} alt="" />
+                        <img className="w-4" src={rating} alt="" />
+                        <img className="w-4" src={rating} alt="" />
+                        <img className="w-4" src={rating} alt="" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold">
+                          {"5 " + "(" + item.rating.count + " reviews)"}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-sm font-bold">
-                        {"5 " + "(" + item.rating.count + " reviews)"}
-                      </p>
-                    </div>
+                    <div className="flex mx-2 gap-2 pb-3">
+                      <p className="text-black font-bold">${item.price}</p>
+                      <p className="line-through">${Math.round(item.price * 1.66)}</p>
+                      <span className="text-red-600 font-bold">(60%)</span>
                     </div>
                   </div>
                 </>
