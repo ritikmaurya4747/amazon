@@ -22,7 +22,24 @@ function Cart() {
       payload: item,
     });
   };
+   
+  const incrementHandler = (item) =>{
+    dispatch({
+      type: "INCREMENT_ITEM_COUNT",
+      payload: { id: item.id },
+    });
+  }
 
+  const decrementHandler = (item) => {
+    if (item.quantity > 1) { // Only decrement if quantity is greater than 1
+      dispatch({
+        type: "DECREMENT_ITEM_COUNT",
+        payload: { id: item.id },
+      });
+    } else {
+      handleRemoveFromCart(item); // Remove item if quantity reaches 0
+    }
+  };
   return (
     <>
       <Navbar />
@@ -60,15 +77,19 @@ function Cart() {
                         </div>
                         <div className="flex mt-5 items-center gap-10">
                           <div className="w-28 h-12 flex justify-center items-center gap-6 bg-white shadow-xl rounded-md ">
-                            <button className="font-bold text-2xl">+</button>
+                            <button 
+                            onClick={()=>incrementHandler(item)}
+                            className="font-bold text-2xl">+</button>
                             <p>{item.quantity}</p>
-                            <button className="font-bold text-2xl">-</button>
+                            <button 
+                            onClick={()=>decrementHandler(item)}
+                            className="font-bold text-2xl">-</button>
                           </div>
                           <div className="flex gap-4 font-semibold text-gray-700">
                             <div className="flex gap-2 ">
                               <img
                                 onClick={() => toggleWishlist(item)}
-                                className="w-6 h-6 cursor-pointer"
+                                className="w-6 h-6 cursor-pointer transform transition-transform duration-200 hover:scale-125"
                                 src={
                                   wishlist.some((w) => w.id === item.id)
                                     ? heart_red
@@ -79,9 +100,13 @@ function Cart() {
                               <button>Save</button>
                             </div>
                             <div className="flex gap-2">
-                                
-                              <img className="w-6 h-6" src={del} alt="" />
-                              <button onClick={handleRemoveFromCart}>Delete</button>
+                              <img
+                                onClick={() => handleRemoveFromCart(item)}
+                                className="w-6 h-6 cursor-pointer transform transition-transform duration-200 hover:scale-125"
+                                src={del}
+                                alt=""
+                              />
+                              <button>Delete</button>
                             </div>
                           </div>
                         </div>
@@ -111,7 +136,8 @@ function Cart() {
                       <hr className="border-x-gray-500 my-5 " />
                       <div className="flex justify-between font-bold">
                         <p>Sub-Total</p>
-                        <p>${item.price}</p>
+                        <p>${(item.price * item.quantity).toFixed(2)}</p>
+
                       </div>
                       <div className="flex justify-between text-gray-600 my-2">
                         <p>Delivery</p>
