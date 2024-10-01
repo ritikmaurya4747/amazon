@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import heart from "../imgs/heart.png";
 import heart_red from "../imgs/red-heart.png";
 import rating from "../imgs/rating.png";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import empty from "../imgs/empty.png";
 
 function Wishlist() {
   const wishlist = useSelector((state) => state.wishlist.wishlist);
@@ -92,7 +93,24 @@ function Wishlist() {
               ))}
             </div>
           ) : (
-            <p className="text-center py-10">Your wishlist is empty!</p>
+            
+           
+            <div className="flex">
+            <img  className="w-96" src={empty} alt="" />
+             <div className="shadow-2xl p-10 bg-white rounded-2xl">
+             <p className="font-bold text-3xl py-3">It's empty here!</p>
+              <p className="text-xl pt-3">
+                "Don't let your wishlist collect dust. Add some items that bring
+                joy to your life and watch as they become a reality with just a
+                few clicks."
+              </p>
+              <Link to="/">
+                <button className="mt-10 bg-orange-400 px-4 py-3 rounded-md">Go Shopping</button>
+              </Link>
+             </div>
+              
+            </div>
+            
           )}
         </div>
       </div>

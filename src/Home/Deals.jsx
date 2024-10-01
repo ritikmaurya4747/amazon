@@ -34,7 +34,7 @@ function Deals() {
   };
 
   return (
-    <div className="bg-gray-100 mt-10 py-3">
+    <div id="deals-section" className="bg-gray-100 mt-10 py-3">
       <p className="text-2xl font-bold text-center mb-10">Hot Deals 🔥</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 w-[95%] mx-auto">
         {allProducts.map((item) => (

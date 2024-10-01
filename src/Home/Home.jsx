@@ -6,7 +6,7 @@ import Deals from "./Deals";
 function Home() {
   return (
     <>
-    <Header/>
+      <Header />
       <div className=" bg-gray-100 py-10">
         <div className="flex justify-around bg-orange-400 w-[70%] mx-auto rounded-xl text-white">
           <div className="w-1/2">
@@ -15,9 +15,11 @@ function Home() {
               Don't miss it out! Only today, get free <b>Next Day</b> delivery
               on all your <br /> orders
             </p>
-            <button className="bg-white text-orange-400 rounded-[30px] font-bold text-xl my-6 p-3">
-              Browse products
-            </button>
+            <a href="#deals-section">
+              <button className="bg-white text-orange-400 rounded-[30px] font-bold text-xl my-6 p-3 ">
+                Browse products
+              </button>
+            </a>
           </div>
           <div className="">
             <img className="w-80" src={man_logo} alt="" />
@@ -25,8 +27,9 @@ function Home() {
         </div>
         <Popular />
       </div>
-        <Deals/>
-      
+      <div id="deals-section">
+        <Deals />
+      </div>
     </>
   );
 }
