@@ -105,7 +105,7 @@ function Wishlist() {
                 few clicks."
               </p>
               <Link to="/">
-                <button className="mt-10 bg-orange-400 px-4 py-3 rounded-md">Go Shopping</button>
+                <button className="mt-10 bg-orange-400 px-4 py-3 rounded-md text-white font-bold text-xl">Go Shopping</button>
               </Link>
              </div>
               

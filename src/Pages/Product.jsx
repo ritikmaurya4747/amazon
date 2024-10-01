@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
 import Navbar from "../Home/Navbar";
 import { CategoryContext } from "../Context/Context";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import rating from "../imgs/rating.png";
-import { Link } from "react-router-dom";
 
 function Product() {
   const { products } = useContext(CategoryContext);
   const { id } = useParams();
   const product = products.find((e) => e.id === Number(id));
   const [size, setSize] = useState("");
+  const dispatch = useDispatch();
 
   // Check if the product exists
   if (!product) {
@@ -19,6 +20,13 @@ function Product() {
       </div>
     );
   }
+
+  const handleAddToCart = () => {
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: product,
+    });
+  };
 
   return (
     <>
@@ -76,7 +84,10 @@ function Product() {
             {/* Buttons */}
             <div className="flex gap-9 my-3 mb-8">
               <Link to="/cart">
-                <button className="bg-orange-400 text-white text-xl font-bold px-4 py-3 rounded-md">
+                <button
+                  onClick={handleAddToCart}
+                  className="bg-orange-400 text-white text-xl font-bold px-4 py-3 rounded-md"
+                >
                   Buy Now
                 </button>
               </Link>
