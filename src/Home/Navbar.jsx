@@ -9,7 +9,7 @@ function Header() {
 
   return (
     <>
-      <div className="bg-gray-900 flex text-white px-8 p-6 justify-between items-center">
+      <div className="bg-gray-900 flex text-white px-8 p-6 justify-between items-center sticky top-0 z-50">
         <div className="flex justify-around space-x-24">
           <div>
             <Link to="/"> 
@@ -53,7 +53,7 @@ function Header() {
             alt="order"
           />
           </Link>
-          <Link to="/user">
+          <Link to="/account">
           <img
             className="w-12 h-12 cursor-pointer"
             src={header_img.user}
