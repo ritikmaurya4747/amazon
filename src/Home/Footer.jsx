@@ -4,7 +4,7 @@ import footer_img from "../assets/imgs.js";
 function Footer() {
   return (
     <>
-    <div className="text-gray-100  bg-gray-900 flex py-6 mt-2 justify-center "><h3><span className=" font-bold">Disclaimer:</span> This Amazon clone project is a mere simulation and is not affiliated with Amazon in any way.</h3></div>
+    <div className="text-gray-100  bg-gray-900 flex py-6  justify-center "><h3><span className=" font-bold">Disclaimer:</span> This Amazon clone project is a mere simulation and is not affiliated with Amazon in any way.</h3></div>
       <div className="flex justify-around ">
         <div className="">
           <h2 className="font-bold  text-lg py-4">Get to Know us</h2>
