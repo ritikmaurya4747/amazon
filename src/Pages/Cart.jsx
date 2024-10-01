@@ -6,13 +6,20 @@ import save from "../imgs/save.png";
 import heart_red from "../imgs/red-heart.png";
 import del from "../imgs/delete.png";
 function Cart() {
+  const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  const handleRemoveFromCart = () => {
-    useDispatch({
+  const handleRemoveFromCart = (product) => {
+    dispatch({
       type: "REMOVE_FROM_CART",
       payload: { id: product.id },
+    });
+  };
+  const toggleWishlist = (item) => {
+    dispatch({
+      type: "TOGGLE_WISHLIST_ITEM",
+      payload: item,
     });
   };
 
