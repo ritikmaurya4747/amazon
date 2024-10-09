@@ -167,7 +167,7 @@ function Cart() {
                         <p>${total}</p>
                       </div>
                       <div className="flex justify-center mt-6">
-                        <Link to="payment">
+                        <Link to="/payment">
                         <button  className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
                           Proceed to Payment
                         </button>
