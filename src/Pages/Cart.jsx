@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Home/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import cart_empty from "../imgs/cart-empty.png";
 import save from "../imgs/save.png";
 import heart_red from "../imgs/red-heart.png";
 import del from "../imgs/delete.png";
+import { Link } from "react-router-dom";
 function Cart() {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
@@ -57,7 +57,6 @@ function Cart() {
 
   return (
     <>
-      <Navbar />
       <div className="bg-gray-100">
         <div className="w-[80%] h-auto mx-auto ">
           <div className="flex justify-center">
@@ -168,9 +167,11 @@ function Cart() {
                         <p>${total}</p>
                       </div>
                       <div className="flex justify-center mt-6">
-                        <button className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
+                        <Link to="payment">
+                        <button  className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
                           Proceed to Payment
                         </button>
+                        </Link>
                       </div>
                     </div>
                   </div>

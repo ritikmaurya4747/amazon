@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import Navbar from "../Home/Navbar";
 import { CategoryContext } from "../Context/Context";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -30,7 +29,6 @@ function Product() {
 
   return (
     <>
-      <Navbar />
       <div className="bg-slate-50">
         <div className="w-[80%] mx-auto h-auto flex justify-between">
           <div className="w-full h-auto flex justify-center items-center">

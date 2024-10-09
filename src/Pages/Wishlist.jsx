@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../Home/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import heart from "../imgs/heart.png";
 import heart_red from "../imgs/red-heart.png";
@@ -21,7 +20,6 @@ function Wishlist() {
 
   return (
     <>
-      <Navbar />
       <div className="bg-gray-100 h-auto pb-10 py-3">
         <h1 className="text-center font-bold text-3xl py-5">Wishlist</h1>
         <div className="w-[80%] h-auto mx-auto  flex justify-center">
