@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Home/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import cart_empty from "../imgs/cart-empty.png";
@@ -40,6 +40,21 @@ function Cart() {
       handleRemoveFromCart(item); // Remove item if quantity reaches 0
     }
   };
+
+  // adding percent on the total quantity of the itmes
+  const [total, setTotal] = useState(0);
+  useEffect(()=>{
+    const newTotal = cartItems.reduce(
+      (total,item) => total + item.price * item.quantity,0 )
+      setTotal(newTotal); 
+  },[cartItems])
+
+  const discountPrice = (total*0.2).toFixed(2);
+  const taxPrice = (total * 0.05).toFixed(2);
+
+
+
+
   return (
     <>
       <Navbar />
@@ -145,12 +160,12 @@ function Cart() {
                       </div>
                       <div className="flex justify-between text-gray-600">
                         <p>Tax</p>
-                        <p>(5%) + $1.11</p>
+                        <p>(5%)+${taxPrice} </p>
                       </div>
                       <hr className="border-x-gray-500 my-5 " />
                       <div className="flex justify-between font-bold my-2">
                         <p>Total</p>
-                        <p>${item.price}</p>
+                        <p>${total}</p>
                       </div>
                       <div className="flex justify-center mt-6">
                         <button className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
