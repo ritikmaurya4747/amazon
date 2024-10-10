@@ -89,7 +89,9 @@ function Product() {
                   Buy Now
                 </button>
               </Link>
-              <button className="bg-black text-white text-xl font-bold px-6 py-3 rounded-md">
+              <button 
+              onClick={handleAddToCart}
+              className="bg-black text-white text-xl font-bold px-6 py-3 rounded-md">
                 Added
               </button>
             </div>

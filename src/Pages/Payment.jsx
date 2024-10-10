@@ -51,10 +51,12 @@ function Payment() {
   );
 
   return (
-    <div className="w-full h-auto bg-gray-100 py-10">
-      <div className="w-[75%] h-auto bg-white mx-auto drop-shadow-2xl py-5 px-10 rounded-2xl">
-        <h1 className="text-black text-2xl font-bold py-5">Shipping Details</h1>
-        {!showPaymentMethod && (
+    <div className="w-full h-[540px] bg-gray-100 py-10">
+      {!showPaymentMethod && (
+        <div className="w-[75%] h-auto bg-white mx-auto drop-shadow-2xl py-5 px-10 rounded-2xl">
+          <h1 className="text-black text-2xl font-bold py-5">
+            Shipping Details
+          </h1>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -149,13 +151,13 @@ function Payment() {
               Submit
             </button>
           </form>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Show payment method section only if showPaymentMethod is true */}
       {showPaymentMethod && (
-        <div className="w-[450px] h-80 mx-auto shadow-2xl bg-white rounded-xl p-10">
-          <div className="flex-col justify-center space-y-10">
+        <div className="w-[450px] h-96 mx-auto shadow-2xl bg-white rounded-xl p-10 mt-12">
+          <div className="flex-col justify-center space-y-12">
             <h1 className=" font-bold text-2xl">Choose your payment method</h1>
             <div className="flex gap-5 ">
               <input

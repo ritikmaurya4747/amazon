@@ -22,16 +22,17 @@ function Cart() {
       payload: item,
     });
   };
-   
-  const incrementHandler = (item) =>{
+
+  const incrementHandler = (item) => {
     dispatch({
       type: "INCREMENT_ITEM_COUNT",
       payload: { id: item.id },
     });
-  }
+  };
 
   const decrementHandler = (item) => {
-    if (item.quantity > 1) { // Only decrement if quantity is greater than 1
+    if (item.quantity > 1) {
+      // Only decrement if quantity is greater than 1
       dispatch({
         type: "DECREMENT_ITEM_COUNT",
         payload: { id: item.id },
@@ -43,17 +44,19 @@ function Cart() {
 
   // adding percent on the total quantity of the itmes
   const [total, setTotal] = useState(0);
-  useEffect(()=>{
+  const [taxPrice, setTaxPrice] = useState(0);
+  const taxRate = 0.05;
+
+  useEffect(() => {
     const newTotal = cartItems.reduce(
-      (total,item) => total + item.price * item.quantity,0 )
-      setTotal(newTotal); 
-  },[cartItems])
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+    setTotal(newTotal);
+    setTaxPrice((newTotal * taxRate).toFixed(2));
+  }, [cartItems]);
 
-  const discountPrice = (total*0.2).toFixed(2);
-  const taxPrice = (total * 0.05).toFixed(2);
-
-
-
+  
 
   return (
     <>
@@ -91,13 +94,19 @@ function Cart() {
                         </div>
                         <div className="flex mt-5 items-center gap-10">
                           <div className="w-28 h-12 flex justify-center items-center gap-6 bg-white shadow-xl rounded-md ">
-                            <button 
-                            onClick={()=>incrementHandler(item)}
-                            className="font-bold text-2xl">+</button>
+                            <button
+                              onClick={() => incrementHandler(item)}
+                              className="font-bold text-2xl"
+                            >
+                              +
+                            </button>
                             <p>{item.quantity}</p>
-                            <button 
-                            onClick={()=>decrementHandler(item)}
-                            className="font-bold text-2xl">-</button>
+                            <button
+                              onClick={() => decrementHandler(item)}
+                              className="font-bold text-2xl"
+                            >
+                              -
+                            </button>
                           </div>
                           <div className="flex gap-4 font-semibold text-gray-700">
                             <div className="flex gap-2 ">
@@ -151,7 +160,6 @@ function Cart() {
                       <div className="flex justify-between font-bold">
                         <p>Sub-Total</p>
                         <p>${(item.price * item.quantity).toFixed(2)}</p>
-
                       </div>
                       <div className="flex justify-between text-gray-600 my-2">
                         <p>Delivery</p>
@@ -164,13 +172,13 @@ function Cart() {
                       <hr className="border-x-gray-500 my-5 " />
                       <div className="flex justify-between font-bold my-2">
                         <p>Total</p>
-                        <p>${total}</p>
+                        <p>${(total + parseFloat(taxPrice)).toFixed(2)}</p>
                       </div>
                       <div className="flex justify-center mt-6">
                         <Link to="/payment">
-                        <button  className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
-                          Proceed to Payment
-                        </button>
+                          <button className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
+                            Proceed to Payment
+                          </button>
                         </Link>
                       </div>
                     </div>
