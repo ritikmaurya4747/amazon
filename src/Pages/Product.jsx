@@ -3,6 +3,7 @@ import { CategoryContext } from "../Context/Context";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import rating from "../imgs/rating.png";
+import { toast } from "react-toastify";
 
 function Product() {
   const { products } = useContext(CategoryContext);
@@ -25,6 +26,7 @@ function Product() {
       type: "ADD_TO_CART",
       payload: product,
     });
+    toast.success("Product added to cart!");
   };
 
   return (
@@ -96,7 +98,7 @@ function Product() {
               </button>
             </div>
           </div>
-        </div>
+        </div>    
       </div>
     </>
   );
