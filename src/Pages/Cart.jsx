@@ -5,6 +5,7 @@ import save from "../imgs/save.png";
 import heart_red from "../imgs/red-heart.png";
 import del from "../imgs/delete.png";
 import { Link } from "react-router-dom";
+
 function Cart() {
   const dispatch = useDispatch();
   const wishlist = useSelector((state) => state.wishlist.wishlist);
@@ -16,6 +17,7 @@ function Cart() {
       payload: { id: product.id },
     });
   };
+
   const toggleWishlist = (item) => {
     dispatch({
       type: "TOGGLE_WISHLIST_ITEM",
@@ -32,17 +34,15 @@ function Cart() {
 
   const decrementHandler = (item) => {
     if (item.quantity > 1) {
-      // Only decrement if quantity is greater than 1
       dispatch({
         type: "DECREMENT_ITEM_COUNT",
         payload: { id: item.id },
       });
     } else {
-      handleRemoveFromCart(item); // Remove item if quantity reaches 0
+      handleRemoveFromCart(item);
     }
   };
 
-  // adding percent on the total quantity of the itmes
   const [total, setTotal] = useState(0);
   const [taxPrice, setTaxPrice] = useState(0);
   const taxRate = 0.05;
@@ -56,29 +56,26 @@ function Cart() {
     setTaxPrice((newTotal * taxRate).toFixed(2));
   }, [cartItems]);
 
-  
-
   return (
     <>
       <div className="bg-gray-100">
-        <div className="w-[80%] h-auto mx-auto ">
+        <div className="w-[70%] h-auto mx-auto ">
           <div className="flex justify-center">
             <h1 className="font-bold text-3xl py-2">Your Cart</h1>
           </div>
-          <div className="">
-            {cartItems.length === 0 ? (
-              <div className="flex justify-center py-5">
-                {" "}
-                <img className="w-96" src={cart_empty} alt="" />
-              </div>
-            ) : (
-              cartItems.map((item) => (
-                <>
-                  <div className=" w-[80%] h-auto mx-auto gap-5  flex justify-between py-8">
-                    <div
-                      key={item.id}
-                      className="w-[60%] h-60 border bg-white shadow-4xl py-2 rounded-xl flex"
-                    >
+          <div className="flex justify-evenly py-7"> {/* Updated wrapper div */}
+            <div className="w-[60%] flex flex-col gap-5"> {/* Cart items section */}
+              {cartItems.length === 0 ? (
+                <div className="flex justify-center py-5">
+                  <img className="w-96" src={cart_empty} alt="" />
+                </div>
+              ) : (
+                cartItems.map((item) => (
+                  <div
+                    key={item.id}
+                    className="w-[80%] h-auto mx-auto flex justify-between gap-5   "
+                  >
+                    <div className="h-60 border bg-white shadow-4xl py-2  rounded-xl flex">
                       <div className="w-[20%] px-4 py-2 flex justify-center items-center">
                         <img className="w-44" src={item.image} alt="" />
                       </div>
@@ -89,7 +86,7 @@ function Cart() {
                           </p>
                           <p className="font-bold">${item.price}</p>
                           <p className="font-semibold text-gray-900">
-                            Size : Not Choosen
+                            Size : Not Chosen
                           </p>
                         </div>
                         <div className="flex mt-5 items-center gap-10">
@@ -127,7 +124,7 @@ function Cart() {
                                 onClick={() => handleRemoveFromCart(item)}
                                 className="w-6 h-6 cursor-pointer transform transition-transform duration-200 hover:scale-125"
                                 src={del}
-                                alt=""
+                                alt="delete"
                               />
                               <button>Delete</button>
                             </div>
@@ -135,57 +132,60 @@ function Cart() {
                         </div>
                       </div>
                     </div>
-                    {/* Chekout to payment  */}
-                    <div className="w-[50%] h-auto bg-white shadow-lg rounded-2xl p-7">
-                      <div className="bg-green-400 p-2 rounded-md text-gray-800 font-base">
-                        <p>
-                          Congrats! You're eligible for <b>Free Delivery</b>.
-                        </p>
-                        <p>
-                          Use code <b>SHUBHO20</b> for 20% discount.
-                        </p>
-                      </div>
-                      <hr className="border-x-gray-500 my-5 " />
-                      <div className="flex gap-2">
-                        <input
-                          className="border w-60 rounded-md h-10 outline-none pl-2 placeholder:text-base"
-                          type="text"
-                          placeholder="Promocode"
-                        />
-                        <button className="bg-black text-white font-semibold text-xl px-2 py-1 rounded-md">
-                          Apply
-                        </button>
-                      </div>
-                      <hr className="border-x-gray-500 my-5 " />
-                      <div className="flex justify-between font-bold">
-                        <p>Sub-Total</p>
-                        <p>${(item.price * item.quantity).toFixed(2)}</p>
-                      </div>
-                      <div className="flex justify-between text-gray-600 my-2">
-                        <p>Delivery</p>
-                        <p>$0.00</p>
-                      </div>
-                      <div className="flex justify-between text-gray-600">
-                        <p>Tax</p>
-                        <p>(5%)+${taxPrice} </p>
-                      </div>
-                      <hr className="border-x-gray-500 my-5 " />
-                      <div className="flex justify-between font-bold my-2">
-                        <p>Total</p>
-                        <p>${(total + parseFloat(taxPrice)).toFixed(2)}</p>
-                      </div>
-                      <div className="flex justify-center mt-6">
-                        <Link to="/payment">
-                          <button className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
-                            Proceed to Payment
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
                   </div>
-                </>
-              ))
-            )}
+                ))
+              )}
+            </div>
+            <div className="w-[40%]"> {/* Checkout section on the right */}
+              {cartItems.length > 0 && (
+                <div className="w-full h-auto bg-white shadow-lg rounded-2xl p-7">
+                  <div className="bg-green-400 p-2 rounded-md text-gray-800 font-base">
+                    <p>
+                      Congrats! You're eligible for <b>Free Delivery</b>.
+                    </p>
+                    <p>
+                      Use code <b>SHUBHO20</b> for 20% discount.
+                    </p>
+                  </div>
+                  <hr className="border-x-gray-500 my-5 " />
+                  <div className="flex gap-2">
+                    <input
+                      className="border w-60 rounded-md h-10 outline-none pl-2 placeholder:text-base"
+                      type="text"
+                      placeholder="Promocode"
+                    />
+                    <button className="bg-black text-white font-semibold text-xl px-2 py-1 rounded-md">
+                      Apply
+                    </button>
+                  </div>
+                  <hr className="border-x-gray-500 my-5 " />
+                  <div className="flex justify-between font-bold">
+                    <p>Sub-Total</p>
+                    <p>${total.toFixed(2)}</p>
+                  </div>
+                  <div className="flex justify-between text-gray-600 my-2">
+                    <p>Delivery</p>
+                    <p>$0.00</p>
+                  </div>
+                  <div className="flex justify-between text-gray-600">
+                    <p>Tax</p>
+                    <p>(5%)+${taxPrice} </p>
+                  </div>
+                  <hr className="border-x-gray-500 my-5 " />
+                  <div className="flex justify-between font-bold my-2">
+                    <p>Total</p>
+                    <p>${(total + parseFloat(taxPrice)).toFixed(2)}</p>
+                  </div>
+                  <div className="flex justify-center mt-6">
+                    <Link to="/payment">
+                      <button className="bg-orange-400 font-bold text-white rounded-md w-80 h-14 text-xl">
+                        Proceed to Payment
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

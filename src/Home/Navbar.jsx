@@ -3,17 +3,18 @@ import header_img from "../assets/imgs.js";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-
 function Header() {
   const wishlistCount = useSelector((state) => state.wishlist.wishlist.length);
+  const cartCount = useSelector((state) => state.cart.cartItems.length);
 
   return (
     <>
       <div className="bg-gray-900 flex text-white px-8 p-6 justify-between items-center sticky top-0 z-50">
         <div className="flex justify-around space-x-24">
           <div>
-            <Link to="/"> 
-            <img className="w-28" src={header_img.logo} alt="img" /></Link>
+            <Link to="/">
+              <img className="w-28" src={header_img.logo} alt="img" />
+            </Link>
           </div>
           <div className="flex">
             <input
@@ -30,35 +31,42 @@ function Header() {
         </div>
         <div className="flex gap-8 mx-5 items-center">
           <Link to="/wishlist">
-            <div className="relative"><img
-              className="w-8 h-8 cursor-pointer"
-              src={header_img.heart}
-              alt="heart"
-            />
-            <span className="absolute -top-2 -right-2 text-xs bg-red-600 text-white rounded-full h-5 w-5 flex items-center justify-center">
-            {wishlistCount}
-          </span></div>
+            <div className="relative">
+              <img
+                className="w-8 h-8 cursor-pointer"
+                src={header_img.heart}
+                alt="heart"
+              />
+              <span className="absolute -top-2 -right-2 text-xs bg-orange-400 text-white rounded-full h-5 w-5 flex items-center justify-center">
+                {wishlistCount}
+              </span>
+            </div>
           </Link>
           <Link to="/cart">
-          <img
-            className="w-8 h-8 cursor-pointer "
-            src={header_img.added}
-            alt="added"
-          />
+            <div className="relative">
+              <img
+                className="w-8 h-8 cursor-pointer "
+                src={header_img.added}
+                alt="added"
+              />
+              <span className="absolute -top-2 -right-2 text-xs bg-orange-400 text-white rounded-full h-5 w-5 flex items-center justify-center">
+                {cartCount}
+              </span>
+            </div>
           </Link>
           <Link to="/order">
-          <img
-            className="w-8 h-8 cursor-pointer"
-            src={header_img.orders}
-            alt="order"
-          />
+            <img
+              className="w-8 h-8 cursor-pointer"
+              src={header_img.orders}
+              alt="order"
+            />
           </Link>
           <Link to="/account">
-          <img
-            className="w-12 h-12 cursor-pointer"
-            src={header_img.user}
-            alt="user"
-          />
+            <img
+              className="w-12 h-12 cursor-pointer"
+              src={header_img.user}
+              alt="user"
+            />
           </Link>
         </div>
       </div>
