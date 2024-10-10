@@ -37,9 +37,9 @@ function Header() {
                 src={header_img.heart}
                 alt="heart"
               />
-              <span className="absolute -top-2 -right-2 text-xs bg-orange-400 text-white rounded-full h-5 w-5 flex items-center justify-center">
+              {wishlistCount > 0 && (<span className="absolute -top-2 -right-2 text-xs bg-orange-400 text-white rounded-full h-5 w-5 flex items-center justify-center">
                 {wishlistCount}
-              </span>
+              </span>)}
             </div>
           </Link>
           <Link to="/cart">
@@ -49,9 +49,9 @@ function Header() {
                 src={header_img.added}
                 alt="added"
               />
-              <span className="absolute -top-2 -right-2 text-xs bg-orange-400 text-white rounded-full h-5 w-5 flex items-center justify-center">
+              {cartCount > 0 && (<span className="absolute -top-2 -right-2 text-xs bg-orange-400 text-white rounded-full h-5 w-5 flex items-center justify-center">
                 {cartCount}
-              </span>
+              </span>)}
             </div>
           </Link>
           <Link to="/order">

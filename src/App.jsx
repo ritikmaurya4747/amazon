@@ -12,7 +12,6 @@ import Account from "./Pages/Account";
 import Product from "./Pages/Product";
 import Payment from "./Pages/Payment";
 import Navbar from "./Home/Navbar";
-// Import ToastContainer
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,7 +22,10 @@ function App() {
         <CategoryProvider>
           <div>
             <Navbar />
-            <ToastContainer />
+            <ToastContainer
+              position="top-right"
+              style={{ marginTop: '80px' }} 
+            />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/wishlist" element={<Wishlist />} />
