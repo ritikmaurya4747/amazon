@@ -49,6 +49,8 @@ function Payment() {
     (total, item) => total + (Number(item.price) || 0),
     0
   );
+  const taxRate = 0.05; 
+  const totalPriceWithTax = totalPrice + totalPrice * taxRate;
 
   return (
     <div className="w-full h-[540px] bg-gray-100 py-10">
@@ -170,7 +172,7 @@ function Payment() {
             </div>
             <div className="flex gap-4">
               <p>Total Amount: </p>
-              <p className="font-bold">${totalPrice}</p>
+              <p className="font-bold">${totalPriceWithTax.toFixed(2)}</p>{" "}
             </div>
             <button className="bg-orange-500 w-32 h-12 text-white font-bold text-xl rounded-md">
               Place Order
