@@ -1,5 +1,5 @@
 const cartData = {
-  cartItems: JSON.parse(localStorage.getItem('cartItems')) || [], // Load from local storage
+  cartItems: JSON.parse(localStorage.getItem('cartItems')) || [], 
 };
 
 const cartReducer = (state = cartData, action) => {
