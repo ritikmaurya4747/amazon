@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Payment() {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -49,8 +51,46 @@ function Payment() {
     (total, item) => total + (Number(item.price) || 0),
     0
   );
-  const taxRate = 0.05; 
+  const taxRate = 0.05;
   const totalPriceWithTax = totalPrice + totalPrice * taxRate;
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const addOrder = (orderData) => ({
+    type: "ADD_ORDER",
+    data: orderData,
+  });
+  
+
+  const placeOrder = () => {
+    const orderData = {
+      ...formData,
+      cartItems,
+      totalPrice: totalPriceWithTax,
+    };
+    console.log("Placing order with data:", orderData);
+
+
+    // Save order details in Redux
+    dispatch(addOrder(orderData));
+
+    // Also update localStorage directly if required
+    const currentOrders = JSON.parse(localStorage.getItem("OrderItems")) || [];
+    localStorage.setItem("OrderItems", JSON.stringify([...currentOrders, orderData]));
+
+    // Show success alert
+    Swal.fire({
+      title: "Order Placed!",
+      text: "Your order has been successfully placed.",
+      icon: "success",
+      confirmButtonText: "OK",
+    }).then(() => {
+      // Navigate to the order route
+      navigate("/order");
+    });
+};
+
 
   return (
     <div className="w-full h-[540px] bg-gray-100 py-10">
@@ -174,7 +214,10 @@ function Payment() {
               <p>Total Amount: </p>
               <p className="font-bold">${totalPriceWithTax.toFixed(2)}</p>{" "}
             </div>
-            <button className="bg-orange-500 w-32 h-12 text-white font-bold text-xl rounded-md">
+            <button
+              onClick={placeOrder}
+              className="bg-orange-500 w-32 h-12 text-white font-bold text-xl rounded-md"
+            >
               Place Order
             </button>
           </div>
