@@ -1,5 +1,6 @@
 const cartData = {
   cartItems: JSON.parse(localStorage.getItem('cartItems')) || [], 
+  
 };
 
 const cartReducer = (state = cartData, action) => {
@@ -42,6 +43,7 @@ const cartReducer = (state = cartData, action) => {
         ...state,
         cartItems: decrementedCartItems,
       };
+      
     default:
       return state;
   }

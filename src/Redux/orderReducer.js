@@ -5,7 +5,10 @@ const OrderData = {
 const OrderAdded = (state = OrderData, action) => {
   switch (action.type) {
     case "ADD_ORDER":
-      const productData = action.data;
+      const productData = {
+        ...action.data,
+        id: new Date().getTime(), // Assigning a unique ID to each order
+      };
       const updatedOrder = [...state.OrderItems, productData];
       localStorage.setItem("OrderItems", JSON.stringify(updatedOrder)); // Update local storage
       return {
